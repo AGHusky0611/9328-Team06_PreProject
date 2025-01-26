@@ -1,3 +1,5 @@
+package server;
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -29,7 +31,7 @@ public class server {
             while (true) {
                 Socket clientSocket = serverSocket.accept();
                 String connectionTime = LocalDateTime.now().toString();
-                System.out.println("Client connected at " + connectionTime);
+                System.out.println("client.terminal.Client connected at " + connectionTime);
 
                 new Thread(() -> handleClient(clientSocket, connectionTime)).start();
             }
@@ -42,7 +44,7 @@ public class server {
         try (DataInputStream in = new DataInputStream(clientSocket.getInputStream());
              DataOutputStream out = new DataOutputStream(clientSocket.getOutputStream())) {
 
-            out.writeUTF("SUCCESS: Connected to server at " + connectionTime);
+            out.writeUTF("SUCCESS: Connected to server.server at " + connectionTime);
 
             String command;
             while ((command = in.readUTF()) != null) {
@@ -61,7 +63,7 @@ public class server {
                 }
             }
         } catch (IOException e) {
-            System.err.println("Client disconnected: " + e.getMessage());
+            System.err.println("client.terminal.Client disconnected: " + e.getMessage());
         }
     }
 

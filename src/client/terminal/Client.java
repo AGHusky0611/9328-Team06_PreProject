@@ -1,3 +1,5 @@
+package client.terminal;
+
 import java.io.*;
 import java.net.Socket;
 import java.net.SocketException;
@@ -50,13 +52,13 @@ public class Client {
                     continue;
                 }
 
-                // Read server response
+                // Read server.server response
                 System.out.println("Server: " + in.readUTF());
 
 
             }
         } catch (SocketException e) {
-            System.err.println("Connection was closed by the server: " + e.getMessage());
+            System.err.println("Connection was closed by the server.server: " + e.getMessage());
         } catch (IOException e) {
             e.printStackTrace();
         }
